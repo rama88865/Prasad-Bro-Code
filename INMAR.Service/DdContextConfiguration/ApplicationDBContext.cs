@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using INMAR.Service.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace INMAR.Service.DdContextConfiguration
 {
@@ -12,5 +13,9 @@ namespace INMAR.Service.DdContextConfiguration
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        public DbSet<Users> users { get; set; }
+        public DbSet<Product> products { get; set; }
+        public DbSet<CartItem> cartItems { get; set; }
     }
 }
