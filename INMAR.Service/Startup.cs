@@ -38,9 +38,13 @@ namespace INMAR.Service
                 options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+
             services.AddMvc().AddXmlSerializerFormatters();
 
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<IProductService, ProductService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "INMAR Service", Version = "v1" });
