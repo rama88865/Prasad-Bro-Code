@@ -45,6 +45,8 @@ namespace INMAR.Service
 
             services.AddScoped<IProductService, ProductService>();
 
+            services.AddScoped<ICartItemService, CartItemService>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "INMAR Service", Version = "v1" });
