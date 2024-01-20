@@ -14,6 +14,7 @@ namespace INMAR.Service.Models
         public DateTimeOffset? ModifiedOn { get; set; }
         public long? ModifiedBy { get; set; }
         public bool IsActive { get; set; }
-
+        public virtual Product Product { get; set; }
+        public virtual Users User { get; set; }
     }
 }

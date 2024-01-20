@@ -1,4 +1,6 @@
 ﻿using INMAR.Service.DdContextConfiguration;
+using INMAR.Service.Interfaces;
+using INMAR.Service.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Cors.Infrastructure;
@@ -37,6 +39,8 @@ namespace INMAR.Service
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
             services.AddMvc().AddXmlSerializerFormatters();
+
+            services.AddScoped<IUserService, UserService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "INMAR Service", Version = "v1" });
