@@ -1,4 +1,5 @@
-﻿using INMAR.Service.Interfaces;
+﻿using INMAR.Service.Helpers;
+using INMAR.Service.Interfaces;
 using INMAR.Service.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace INMAR.Service.Controllers
 {
-    [Authorize]
+    [IMARAuthorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CartItemsController : ControllerBase
