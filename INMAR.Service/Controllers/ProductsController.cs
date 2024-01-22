@@ -1,4 +1,5 @@
-﻿using INMAR.Service.Interfaces;
+﻿using INMAR.Service.Helpers;
+using INMAR.Service.Interfaces;
 using INMAR.Service.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -6,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace INMAR.Service.Controllers
 {
-    [Route("api/[controller]")]
+    [IMARAuthorize]
     [ApiController]
-    [Authorize]
+    [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;

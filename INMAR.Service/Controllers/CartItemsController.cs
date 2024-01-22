@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace INMAR.Service.Controllers
 {
-    [Route("api/cartItems")]
-    [ApiController]
     [Authorize]
+    [ApiController]
+    [Route("api/[controller]")]
     public class CartItemsController : ControllerBase
     {
         private readonly ICartItemService cartItemService;

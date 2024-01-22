@@ -56,7 +56,7 @@ namespace INMAR.Service
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "INMAR Service", Version = "v1" });
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                c.AddSecurityDefinition("Authorization", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
                     Description = "Please enter the Authorization header using the Bearer scheme.",
@@ -72,7 +72,7 @@ namespace INMAR.Service
                                 Reference = new OpenApiReference
                                 {
                                     Type = ReferenceType.SecurityScheme,
-                                    Id = "Bearer"
+                                    Id = "Authorization"
                                 }
                             },
                             Array.Empty<string>()
@@ -101,15 +101,13 @@ namespace INMAR.Service
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-                
+
             });
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-           
-
             using (var serviceScope = app.ApplicationServices.CreateScope())
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDBContext>();
@@ -117,16 +115,15 @@ namespace INMAR.Service
                 if (env.IsDevelopment())
                 {
                     dbContext.Database.Migrate();
-
                     SeedData.Initialize(dbContext);
                 }
             }
 
+            app.UseRouting();
+
             app.UseAuthentication();
 
             app.UseAuthorization();
-
-            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
