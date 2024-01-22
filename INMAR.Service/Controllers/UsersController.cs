@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace INMAR.Service.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     [Authorize]
+    [ApiController]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService userService;
