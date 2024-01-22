@@ -20,14 +20,14 @@ namespace INMAR.Service.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
+        public async Task<ActionResult> GetAllProducts()
         {
             var products = await productService.GetAllProduct();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(long id)
+        public async Task<ActionResult> GetProduct(long id)
         {
             var product = await productService.GetProduct(id);
 
